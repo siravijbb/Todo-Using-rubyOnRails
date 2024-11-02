@@ -1,9 +1,21 @@
 class TodosController < ApplicationController
-  before_action :set_todo, only: %i[ show edit update destroy ]
+  before_action :set_todo, only: %i[show edit update destroy]
 
   # GET /todos or /todos.json
   def index
-    @todos = Todo.all
+    # Handle search when a POST request is made with search params
+    if request.post? && params[:todos].present?
+      Rails.logger.info "Received query todos: #{params[:todos]}"
+      redirect_to todos_path(todos: params[:todos]) and return
+    end
+
+    # Handle search when a GET request is made with search params
+    if params[:todos].present?
+      Rails.logger.info "Searching for todos with title: #{params[:todos]}"
+      @todos = Todo.where('title LIKE ?', "%#{params[:todos]}%") # Perform search with LIKE for partial matches
+    else
+      @todos = Todo.all # Return all todos if no query is provided
+    end
   end
 
   # GET /todos/1 or /todos/1.json
@@ -25,12 +37,9 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to @todo, notice: "Todo was successfully created." }
+        format.html { redirect_to todos_path, notice: "Todo was successfully created." }
         format.json { render :show, status: :created, location: @todo }
-      elsif @todo.destroy
-        format.html { redirect_to @todo, notice: "Todo was successfully destroyed." }
-        format.json { render :show, status: :created, location: @todo }
-      else #this should fix
+      else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
@@ -41,7 +50,7 @@ class TodosController < ApplicationController
   def update
     respond_to do |format|
       if @todo.update(todo_params)
-        format.html { redirect_to @todo, notice: "Todo was successfully updated." }
+        format.html { redirect_to todos_path, notice: "Todo was successfully updated." }
         format.json { render :show, status: :ok, location: @todo }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -61,13 +70,14 @@ class TodosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_todo
-      @todo = Todo.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def todo_params
-      params.require(:todo).permit(:title, :completed)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_todo
+    @todo = Todo.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def todo_params
+    params.require(:todo).permit(:title, :completed)
+  end
 end

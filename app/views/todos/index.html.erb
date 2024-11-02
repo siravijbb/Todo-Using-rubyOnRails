@@ -1,5 +1,5 @@
 <% if notice %>
-  <section class="max-w-md w-full mx-auto" >
+  <section class="max-w-md w-full mx-auto  flex-col" >
     <div class="max-w-md bg-orange-100 border-t-4 border-orange-600 rounded-b text-orange-900 px-4 py-3 shadow-md mb-4">
       <div class="flex items-center">
         <div class="py-1">
@@ -12,7 +12,12 @@
     </div>
   </section>
 <% end %>
-<section class="block max-w-md w-full mx-auto bg-zinc-50 py-8 px-4 border border-gray-200 rounded-md shadow-sm" >
+<section class=" max-w-md w-full mx-auto bg-zinc-50 py-8 px-4 border border-gray-200 rounded-md shadow-sm todos_path" >
+  <form class="my-4 w-fit mx-auto flex" method="GET" action="/todos">
+    <input type="text" id="todos" name="todos" class="w-3/4 p-2 rounded border-2 border-amber-950">
+    <button type="submit" class="ml-2 bg-orange-600 p-3 rounded-lg">Search</button>
+  </form>
+
   <div class="flex justify-between items-center">
     <h1 class="text-3xl font-bold text-orange-600" >Todos</h1>
 
