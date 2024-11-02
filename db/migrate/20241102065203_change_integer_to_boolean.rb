@@ -1,13 +1,11 @@
 class ChangeIntegerToBoolean < ActiveRecord::Migration[7.2]
   def change
-    change_table :todos do |t|
-      t.column :completed, :integer
+    remove_column :todos , :completed
     end
 
 
 
-    create_table :todos do |t|
-      t.column :completed, :boolean
+  add_column :todos,:completed, :boolean
 
       end
   end
