@@ -27,9 +27,9 @@ class TodosController < ApplicationController
       if @todo.save
         format.html { redirect_to @todo, notice: "Todo was successfully created." }
         format.json { render :show, status: :created, location: @todo }
-      else if @todo.destroy
-             format.html { redirect_to @todo, notice: "Todo was successfully destroyed." }
-             format.json { render :show, status: :created, location: @todo }
+      elsif @todo.destroy
+        format.html { redirect_to @todo, notice: "Todo was successfully destroyed." }
+        format.json { render :show, status: :created, location: @todo }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
