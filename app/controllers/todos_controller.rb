@@ -30,7 +30,7 @@ class TodosController < ApplicationController
       elsif @todo.destroy
         format.html { redirect_to @todo, notice: "Todo was successfully destroyed." }
         format.json { render :show, status: :created, location: @todo }
-      else
+      else #this should fix
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
