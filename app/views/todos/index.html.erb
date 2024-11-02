@@ -3,6 +3,7 @@
 <h1 class="text-3xl font-bold text-center">Todos</h1>
 
 <div id="todos" class="">
+  <p class="ml-2 text-red-500 font-bold bg-white w-fit h-fit  rounded-lg " ><%= notice %></p>
   <% @todos.each do |todo| %>
     <div class="p-4 bg-white rounded-lg mx-4 mt-2 shadow-lg">
       <%= render todo %>
