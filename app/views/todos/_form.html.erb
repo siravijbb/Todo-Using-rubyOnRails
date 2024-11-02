@@ -1,3 +1,5 @@
+<div >
+  <div class="bg-white w-fit mx-auto p-4 rounded-2xl shadow-lg mt-2">
 <%= form_with(model: todo) do |form| %>
   <% if todo.errors.any? %>
     <div style="color: red">
@@ -13,15 +15,16 @@
 
   <div>
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_area :title %>
+    <%= form.text_area :title ,class: "border border-gray-600"%>
   </div>
 
   <div>
     <%= form.label :completed, style: "display: block" %>
-    <%= form.number_field :completed %>
+    <%= form.number_field :completed ,class: "border border-gray-600"%>
   </div>
 
-  <div>
+  <div class="bg-green-500 hover:bg-green-600 p-4 rounded-2xl my-2 w-fit h-fit mx-auto text-white">
     <%= form.submit %>
   </div>
 <% end %>
+</div></div>

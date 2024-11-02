@@ -1,12 +1,15 @@
-<% content_for :title, "Editing todo" %>
+<div class="bg-blue-400 mx-auto w-full max-w-2xl rounded-2xl h-[500px]">
+  <h1 class="text-3xl font-bold text-center">Todos</h1>
 
-<h1>Editing todo</h1>
+<% content_for :title, "Editing todo" %>
+<h1 class="text-xl font-bold text-center">Editing todo</h1>
 
 <%= render "form", todo: @todo %>
 
 <br>
 
 <div>
-  <%= link_to "Show this todo", @todo %> |
-  <%= link_to "Back to todos", todos_path %>
+  <%= link_to "Show this todo", @todo , class: "block m-2 ml-4 px-4 py-2 bg-amber-400 text-white rounded-lg hover:bg-amber-500 w-fit" %>
+  <%= link_to "Back to todos", todos_path, class: "block m-2 ml-4 px-4 py-2 bg-amber-400 text-white rounded-lg hover:bg-amber-500 w-fit" %>
+</div>
 </div>

@@ -1,10 +1,10 @@
 
-<div class="bg-blue-400 mx-auto ">
+<div class=" bg-blue-400 mx-auto w-screen  rounded-2xl h-[500px]">
 <h1 class="text-3xl font-bold text-center">Todos</h1>
 
 <div id="todos" class="">
   <% @todos.each do |todo| %>
-    <div class="p-4 bg-white shadow rounded-lg">
+    <div class="p-4 bg-white rounded-lg mx-4 mt-2 shadow-lg">
       <%= render todo %>
       <p class="mt-2">
         <%= link_to "Show this todo", todo, class: "text-blue-500 hover:underline" %>
@@ -13,7 +13,7 @@
   <% end %>
 </div>
 
-<div class="block mt-5">
-  <%= link_to "New todo", new_todo_path, class: "block px-4 py-2 bg-amber-400 text-white rounded-lg hover:bg-amber-500" %>
+<div class="block mt-5 mx-2">
+  <%= link_to "New todo", new_todo_path, class: "block m-2 px-4 py-2 bg-amber-400 text-white rounded-lg hover:bg-amber-500 w-fit" %>
 </div>
 </div>

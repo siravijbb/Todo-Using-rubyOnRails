@@ -1,10 +1,16 @@
+<div class="bg-blue-400 mx-auto w-full max-w-2xl rounded-2xl h-[500px]">
+  <h1 class="text-3xl font-bold text-center">Todos</h1>
+
+  <div class="p-4 bg-white rounded-lg mx-4 mt-2 shadow-lg">
+
 <p style="color: green"><%= notice %></p>
 
 <%= render @todo %>
 
-<div>
-  <%= link_to "Edit this todo", edit_todo_path(@todo) %> |
-  <%= link_to "Back to todos", todos_path %>
+  <%= link_to "Edit this todo", edit_todo_path(@todo) ,class: "block px-4 py-2 bg-amber-400 text-white rounded-lg hover:bg-amber-500 w-fit" %>
 
-  <%= button_to "Destroy this todo", @todo, method: :delete %>
+</div >
+  <%= link_to "Back to todos", todos_path , class: "block m-2 ml-4 px-4 py-2 bg-amber-400 text-white rounded-lg hover:bg-amber-500 w-fit" %>
+
+  <%= button_to "Destroy this todo", @todo, method: :delete ,class: "block m-2 ml-4 px-4 py-2 bg-red-400 text-white rounded-lg hover:bg-amber-500 w-fit" %>
 </div>
